@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Auth\Authenticatable;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -14,6 +13,10 @@ use App\Traits\TResponder;
 use Illuminate\Routing\Controller as BaseController;
 use Lang;
 
+/**
+ * Class Controller
+ * @package App\Http\Controllers
+ */
 class Controller extends BaseController
 {
     use AuthorizesRequests;
@@ -36,9 +39,10 @@ class Controller extends BaseController
      *
      * @param string $token
      * @param mixed|null $user
+     * @param int $statusCode
      * @return JsonResponse
      */
-    protected function respondWithToken(string $token, $user = null): JsonResponse
+    protected function respondWithToken(string $token, $user = null, $statusCode = Response::HTTP_OK): JsonResponse
     {
         $data = [
             'token' => $token,
@@ -50,7 +54,7 @@ class Controller extends BaseController
         if (!is_null($user)) {
             $data['user'] = $user;
         }
-        return $this->success($data, Lang::get('auth.success'));
+        return $this->success($data, Lang::get('auth.success'), $statusCode);
     }
 
     /**

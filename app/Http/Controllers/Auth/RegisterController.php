@@ -7,6 +7,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use App\Traits\TResponder;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 /**
  * Class RegisterController
@@ -27,6 +28,6 @@ class RegisterController extends Controller
         $user = User::create(array_merge($credentials, ['password' => bcrypt($password)]));
         //@phpstan-ignore-next-line
         $token = $this->guard()->fromUser($user);
-        return $this->respondWithToken($token, $user);
+        return $this->respondWithToken($token, $user, Response::HTTP_CREATED);
     }
 }
