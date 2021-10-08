@@ -97,6 +97,11 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 > - *./vendor/bin/phpstan analyse --memory-limit=2G*
 > - It has already been aliased in the container's Dockerfile
 
+### Application
+> Access the application in your local host with
+```bash
+  http://127.0.0.1:999 #Or any port you used in during deployment
+```
 
 ### API Collection
 
