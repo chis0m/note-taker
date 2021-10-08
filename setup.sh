@@ -13,4 +13,4 @@ cp .env.example .env
 
 ./sail.sh npm install
 
-./sail.sh npm run watch
+./sail.sh npm run dev
