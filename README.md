@@ -48,12 +48,13 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
   vendor/bin/sail artisan migrate --seed
 ```
 
-> *Note:* For a quicker installation, you can copy and paste the below commands at web directory
+> *Note:* For a quicker installation, you can copy and paste the below commands at your web directory
 > and you are up and running in few minutes.
-```
+
+```bash
 	git clone https://github.com/chis0m/note-taker.git
 	cd note-taker
- ./setup.sh
+	./setup.sh
 ```
 
 
