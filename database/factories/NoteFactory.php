@@ -32,7 +32,9 @@ class NoteFactory extends Factory
             'slug' => $slug,
             'description' => $this->faker->realText($this->faker->numberBetween(100, 300)),
             'tags' => $this->faker->word().",".$this->faker->word().",".$this->faker->word(),
-            'read_minute' => $this->faker->randomNumber(1)
+            'read_minute' => $this->faker->randomNumber(1),
+            'reference' => generateReference()
         ];
     }
+
 }

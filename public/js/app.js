@@ -19523,7 +19523,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "convertNumberToBoolean": () => (/* binding */ convertNumberToBoolean)
+/* harmony export */   "convertNumberToBoolean": () => (/* binding */ convertNumberToBoolean),
+/* harmony export */   "generateReference": () => (/* binding */ generateReference)
 /* harmony export */ });
 function convertNumberToBoolean(number) {
   if (number + 1 < 1) {
@@ -19531,6 +19532,26 @@ function convertNumberToBoolean(number) {
   }
 
   return true;
+}
+
+String.prototype.shuffle = function () {
+  var a = this.split(""),
+      n = a.length;
+
+  for (var i = n - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i];
+    a[i] = a[j];
+    a[j] = tmp;
+  }
+
+  return a.join("");
+};
+
+function generateReference() {
+  var lengthOfString = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 15;
+  var strResult = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  return strResult.shuffle().substr(0, lengthOfString);
 }
 
 /***/ }),
@@ -19821,7 +19842,7 @@ var mixin = {
     setIcons: function setIcons(iconName, bool) {
       switch (iconName) {
         case 'addNote':
-          this.$store.commit('setAddNoteIcon', bool);
+          this.$store.commit('setAddNewNoteIcon', bool);
           break;
 
         case 'deleteNote':
@@ -19833,7 +19854,7 @@ var mixin = {
           break;
 
         default:
-          this.$store.commit('setAddNoteIcon', false);
+          this.$store.commit('setAddNewNoteIcon', false);
           this.$store.commit('setDeleteNoteIcon', false);
           this.$store.commit('setEditNoteIcon', false);
       }
@@ -20094,13 +20115,17 @@ __webpack_require__.r(__webpack_exports__);
     user: JSON.parse(localStorage.getItem('user')) || null,
     notes: [],
     note: {},
+    editNote: {},
+    data: {},
     filteredNotes: [],
     searchTerm: '',
-    addNoteIcon: false,
+    addNewNoteIcon: false,
     editNoteIcon: false,
     deleteNoteIcon: false,
+    saveNoteIcon: false,
     addNotePage: false,
     editNotePage: false,
+    addNewNotePage: false,
     deleteNotePage: false
   },
   mutations: {
@@ -20123,8 +20148,14 @@ __webpack_require__.r(__webpack_exports__);
         state.filteredNotes = state.notes;
       }
     },
-    setAddNoteIcon: function setAddNoteIcon(state, bool) {
-      state.addNoteIcon = bool;
+    setData: function setData(state, data) {
+      state.data = data;
+    },
+    setEditNote: function setEditNote(state, editNote) {
+      state.editNote = editNote;
+    },
+    setAddNewNoteIcon: function setAddNewNoteIcon(state, bool) {
+      state.addNewNoteIcon = bool;
     },
     setEditNoteIcon: function setEditNoteIcon(state, bool) {
       state.editNoteIcon = bool;
@@ -20132,25 +20163,30 @@ __webpack_require__.r(__webpack_exports__);
     setDeleteNoteIcon: function setDeleteNoteIcon(state, bool) {
       state.deleteNoteIcon = bool;
     },
+    setSaveNoteIcon: function setSaveNoteIcon(state, bool) {
+      state.saveNoteIcon = bool;
+    },
     setAllNoteIcons: function setAllNoteIcons(state, bool) {
-      state.addNoteIcon = bool;
+      state.addNewNoteIcon = bool;
       state.editNoteIcon = bool;
       state.deleteNoteIcon = bool;
+      state.saveNoteIcon = bool;
     },
     setAllNotePages: function setAllNotePages(state, bool) {
       state.addNotePage = bool;
       state.editNotePage = bool;
+      state.addNewNotePage = bool;
       state.deleteNotePage = bool;
     },
     setAddNotePage: function setAddNotePage(state, bool) {
       state.addNotePage = bool;
     },
+    setAddNewNotePage: function setAddNewNotePage(state, bool) {
+      state.addNewNotePage = bool;
+    },
     setEditNotePage: function setEditNotePage(state, bool) {
       state.editNotePage = bool;
     },
-    // setDeleteNotePage(state, bool){
-    //     state.deleteNotePage = bool;
-    // },
     deny: function deny(state) {
       localStorage.removeItem('access_token');
       localStorage.removeItem('user');
@@ -20165,7 +20201,7 @@ __webpack_require__.r(__webpack_exports__);
       state.notes = notes;
       state.filteredNotes = notes;
     },
-    addNote: function addNote(state, note) {
+    saveNote: function saveNote(state, note) {
       state.notes.unshift(note);
     },
     deleteANote: function deleteANote(state, note) {

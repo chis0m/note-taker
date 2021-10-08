@@ -1,7 +1,7 @@
 <template>
     <div class="w-full h-full text-white flex flex-col items-center justify-center">
         <div class="flex flex-col justify-center items-center" v-if="!auth">
-            <div class="font-bold text-xl md:text-2xl" data-aos="fade-zoom-in" data-aos-duration="900">Take your notes with</div>
+            <div class="font-bold text-xl md:text-2xl" data-aos="fade-zoom-in" data-aos-duration="900">Take your notes with <span>😉</span></div>
             <div class="capitalize text-7xl md:text-9xl font-rhodium font-bold" data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">NOTE</div>
             <div class="capitalize text-7xl md:text-9xl font-rhodium font-bold" data-aos="fade-up" data-aos-delay="400" data-aos-duration="900">TAKER</div>
             <div class="flex" data-aos="flip-left" data-aos-delay="600" data-aos-duration="900">

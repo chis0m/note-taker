@@ -11,6 +11,7 @@ module.exports = {
 				...colors.black,
                 main: '#1e1e1e',
                 side: '#191919',
+                black: '#000',
 			},
             gray: {
 			    ...colors.gray,
@@ -260,6 +261,7 @@ module.exports = {
       rampart: ['Rampart One'],
       lobster: ['Lobster'],
       montserrat: ['Montserrat'],
+      source: ['Source Code Pro'],
       sans: [
         'ui-sans-serif',
         'system-ui',

@@ -24,6 +24,7 @@ class NoteResource extends JsonResource
             'slug' => $this->slug,
             'tags' => $this->tags,
             'description' => $this->description,
+            'reference' => $this->reference,
             'read_minute' => $this->read_minute,
             'created_at' => Carbon::parse($this->created_at)->toFormattedDateString(),
             'updated_at' => Carbon::parse($this->updated_at)->toFormattedDateString(),

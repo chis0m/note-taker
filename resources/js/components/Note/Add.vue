@@ -17,8 +17,12 @@ export default {
   },
   methods: {
       loadAddNotePage(){
+          this.$store.commit('loadANote', {});
+          this.$store.commit('setEditNote', {});
+          this.$store.commit('setAllNoteIcons', false);
           this.$store.commit('setAllNotePages', false);
-          this.$store.commit('setAddNotePage', true);
+          this.$store.commit('setSaveNoteIcon', true);
+          this.$store.commit('setAddNewNotePage', true);
       },
   },
   mounted() {

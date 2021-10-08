@@ -7,18 +7,17 @@
         <div class="w-11/12 h-full">
             <div class="w-full flex">
                 <div class="w-1/2 flex justify-start text-white px-8 sm:px-2 py-2 text-sm sm:text-md font-bold">
-                    <span>Welcome &nbsp;</span> <span>{{user.first_name}}</span>
+                    <span>Welcome,&nbsp;</span> <span>{{user.first_name}}</span>
                 </div>
-                <div class="w-1/2 flex justify-end px-2 py-2">
-                    <TheButton title="Logout" styles="bg-gray-200 hover:bg-yellow-200 text-sm px-1 text-black-main rounded-sm cursor-pointer" @click="logout"/>
+                <div class="w-1/2 flex justify-end px-2 py-1 md:py-2">
+                    <TheButton title="Logout" styles="bg-gray-200 hover:bg-yellow-200 text-xs px-1 text-black-main rounded-sm cursor-pointer" @click="logout"/>
                 </div>
             </div>
             <div class="w-full h-full pt-2 pl-4 sm:pl-2 md:pl-2 pr-6 sm:pr-10 pb-16">
                 <template v-if="!preloading">
-                    <template v-if="noteNoteLoaded">
-                        <template v-if="notes.length > 0">
-                            <NoteList/>
-                        </template>
+                    <template v-if="notViewNote">
+                        <NewNote v-if="addNewNotePage" />
+                        <NoteList v-else-if="notes.length > 0" />
                         <Add v-else />
                     </template>
                     <Note v-else />
@@ -32,6 +31,7 @@
 <script>
 import TheButton from "../General/TheButton";
 import IntroShadow from "../preloaders/note/Intro";
+import NewNote from "./NewNote";
 import Note from "./Note";
 import NoteList from "./List";
 import Add from "./Add";
@@ -44,7 +44,8 @@ export default {
         Add,
         Side,
         IntroShadow,
-        TheButton
+        TheButton,
+        NewNote
     },
     data(){
       return {
@@ -57,7 +58,10 @@ export default {
       user() {
           return this.$store.state.user;
       },
-      noteNoteLoaded(){
+      addNewNotePage() {
+        return this.$store.state.addNewNotePage;
+      },
+      notViewNote(){
           return Object.entries(this.$store.state.note).length === 0
       }
     },
@@ -75,7 +79,7 @@ export default {
         this.preloading = false;
       } catch (error) {
         this.errorMessage = error.response.data.message;
-        this.$notify({group: "error", title: "Error", text: error.response.data.message}, 2000)
+        this.$notify({group: "error", title: "Error", text: error.response.data.message}, 4000)
         if(error.response.status === 401) {
             await this.$router.push({path: '/login'});
         }

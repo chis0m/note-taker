@@ -64,11 +64,11 @@ export default {
         this.$store.commit('authenticate', token);
         this.$store.commit('setUser', user);
         await this.$router.push({path: '/note'});
-          this.$notify({group: "success", title: "Success", text: response.data.message}, 2000)
+        this.$notify({group: "success", title: "Success", text: response.data.message}, 4000)
       } catch (error) {
         this.errors = error.response.data.errors;
         this.errorMessage = error.response.data.message;
-        this.$notify({group: "error", title: "Error", text: error.response.data.message}, 2000)
+        this.$notify({group: "error", title: "Error", text: error.response.data.message}, 4000)
       }
       this.processing = false;
     }

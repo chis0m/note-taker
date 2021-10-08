@@ -7,13 +7,17 @@ export default createStore({
         user: JSON.parse(localStorage.getItem('user')) || null,
         notes : [],
         note: {},
+        editNote: {},
+        data: {},
         filteredNotes : [],
         searchTerm : '',
-        addNoteIcon: false,
+        addNewNoteIcon: false,
         editNoteIcon: false,
         deleteNoteIcon: false,
+        saveNoteIcon: false,
         addNotePage: false,
         editNotePage: false,
+        addNewNotePage: false,
         deleteNotePage: false,
     },
     mutations: {
@@ -37,8 +41,14 @@ export default createStore({
                 state.filteredNotes = state.notes;
             }
         },
-        setAddNoteIcon(state, bool){
-            state.addNoteIcon = bool;
+        setData(state, data) {
+            state.data = data;
+        },
+        setEditNote(state, editNote) {
+            state.editNote = editNote;
+        },
+        setAddNewNoteIcon(state, bool){
+            state.addNewNoteIcon = bool;
         },
         setEditNoteIcon(state, bool) {
             state.editNoteIcon = bool;
@@ -46,26 +56,31 @@ export default createStore({
         setDeleteNoteIcon(state, bool){
             state.deleteNoteIcon = bool;
         },
+        setSaveNoteIcon(state, bool){
+            state.saveNoteIcon = bool;
+        },
         setAllNoteIcons(state, bool){
-          state.addNoteIcon = bool;
+          state.addNewNoteIcon = bool;
           state.editNoteIcon = bool;
           state.deleteNoteIcon = bool;
+          state.saveNoteIcon = bool;
         },
 
         setAllNotePages(state, bool){
           state.addNotePage = bool;
           state.editNotePage = bool;
+          state.addNewNotePage = bool;
           state.deleteNotePage = bool;
         },
         setAddNotePage(state, bool){
             state.addNotePage = bool;
         },
+        setAddNewNotePage(state, bool){
+            state.addNewNotePage = bool;
+        },
         setEditNotePage(state, bool) {
             state.editNotePage = bool;
         },
-        // setDeleteNotePage(state, bool){
-        //     state.deleteNotePage = bool;
-        // },
         deny(state){
           localStorage.removeItem('access_token');
           localStorage.removeItem('user');
@@ -80,7 +95,7 @@ export default createStore({
             state.notes = notes;
             state.filteredNotes = notes;
         },
-        addNote(state, note){
+        saveNote(state, note){
             state.notes.unshift(note);
         },
         deleteANote(state, note){

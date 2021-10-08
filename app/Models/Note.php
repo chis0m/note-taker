@@ -41,6 +41,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Note whereTitle($value)
  * @method static Builder|Note whereUpdatedAt($value)
  * @method static Builder|Note whereUserId($value)
+ * @property-write mixed $reference
+ * @method static Builder|Note whereReference($value)
  */
 class Note extends Model
 {
@@ -52,5 +54,10 @@ class Note extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function setReferenceAttribute($value): void
+    {
+        $this->attributes['reference'] = $value ?? generateReference();
     }
 }

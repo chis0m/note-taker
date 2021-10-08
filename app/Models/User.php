@@ -49,6 +49,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @method static Builder|User whereRole($value)
  * @property-read Collection|Note[] $notes
  * @property-read int|null $notes_count
+ * @property string|null $login_at
+ * @method static Builder|User whereLoginAt($value)
  */
 class User extends Authenticatable implements JWTSubject
 {

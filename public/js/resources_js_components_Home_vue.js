@@ -121,7 +121,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   group: "success",
                   title: "Success",
                   text: response.data.message
-                }, 2000);
+                }, 4000);
 
                 _context.next = 22;
                 break;
@@ -136,7 +136,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   group: "error",
                   title: "Error",
                   text: _context.t0.response.data.message
-                }, 2000);
+                }, 4000);
 
               case 22:
                 _this.processing = false;
@@ -184,6 +184,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       processing: false,
       errors: null,
       errorMessage: null,
+      showPassword: false,
+      visible: '/svg/visibility.svg',
+      invisible: '/svg/invisibility.svg',
       data: {
         first_name: '',
         last_name: '',
@@ -256,7 +259,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   group: "success",
                   title: "Success",
                   text: response.data.message
-                }, 2000);
+                }, 4000);
 
                 _context.next = 15;
                 return _this.$router.push({
@@ -277,7 +280,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   group: "error",
                   title: "Error",
                   text: _context.t0.response.data.message
-                }, 2000);
+                }, 4000);
 
               case 22:
                 _this.processing = false;
@@ -564,12 +567,20 @@ var _hoisted_7 = {
   key: 0,
   "class": "pb-2"
 };
-var _hoisted_8 = ["value"];
-var _hoisted_9 = {
+var _hoisted_8 = {
+  "class": "w-full flex"
+};
+var _hoisted_9 = ["value", "type"];
+var _hoisted_10 = {
+  "class": "w-1/12 grid place-items-center hover:bg-yellow-300 rounded-tr-lg rounded-br-lg border border-4 h-14"
+};
+var _hoisted_11 = ["src"];
+var _hoisted_12 = ["src"];
+var _hoisted_13 = {
   key: 0,
   "class": "pb-2"
 };
-var _hoisted_10 = {
+var _hoisted_14 = {
   "class": "w-full"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -632,17 +643,41 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     );
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     onInput: _cache[3] || (_cache[3] = function ($event) {
       return $options.validateSingly($event, 'password');
     }),
     value: $data.data.password,
-    "class": "w-full block bg-transparent rounded-lg border border-4 text-gray-300 px-4 py-3 mb-3 focus:outline-none placeholder-gray-500",
-    type: "password",
+    "class": "w-11/12 block bg-transparent rounded-bl-lg rounded-tl-lg border border-4 text-gray-300 px-4 py-3 mb-3 focus:outline-none placeholder-gray-500",
+    type: $data.showPassword ? 'text' : 'password',
     placeholder: "Password"
   }, null, 40
   /* PROPS, HYDRATE_EVENTS */
-  , _hoisted_8), $data.errors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_9, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.errors['password'], function (error) {
+  , _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [$data.showPassword ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 0,
+    "class": "hover:bg-yellow-300 cursor-pointer",
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $data.showPassword = !$data.showPassword;
+    })
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $data.invisible,
+    "class": "w-7 md:w-7",
+    alt: "visible"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_11)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 1,
+    "class": "hover:bg-yellow-300 cursor-pointer",
+    onClick: _cache[5] || (_cache[5] = function ($event) {
+      return $data.showPassword = !$data.showPassword;
+    })
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $data.visible,
+    "class": "w-7 md:w-7",
+    alt: "invisible"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_12)]))])]), $data.errors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.errors['password'], function (error) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", {
       key: error,
       "class": "text-xs text-yellow-500 italic"
@@ -651,7 +686,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     );
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SubmitButton, {
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SubmitButton, {
     title: "Signup",
     processBtnClass: "bg-yellow-100 py-2 text-gray-700 text-xl rounded-lg",
     btnClass: "bg-gray-200 rounded-lg text-gray-900 font-bungee text-xl hover:bg-yellow-200 hover:text-gray-800 rounded-bl-xs rounded-br-xs font-bold py-2 focus:outline-none focus:shadow-outline",
@@ -770,7 +805,7 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "font-bold text-xl md:text-2xl",
   "data-aos": "fade-zoom-in",
   "data-aos-duration": "900"
-}, "Take your notes with", -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Take your notes with "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "😉")], -1
 /* HOISTED */
 );
 

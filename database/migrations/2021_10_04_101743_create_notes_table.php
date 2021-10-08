@@ -21,6 +21,7 @@ class CreateNotesTable extends Migration
             $table->longText('description');
             $table->string('tags')->nullable();
             $table->integer('read_minute');
+            $table->string('reference');
             $table->timestamps();
             $table->softDeletes();
         });

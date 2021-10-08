@@ -72,7 +72,7 @@ const mixin = {
         setIcons(iconName, bool) {
             switch (iconName) {
                 case 'addNote':
-                    this.$store.commit('setAddNoteIcon', bool);
+                    this.$store.commit('setAddNewNoteIcon', bool);
                     break;
                 case 'deleteNote':
                     this.$store.commit('setDeleteNoteIcon', bool);
@@ -81,7 +81,7 @@ const mixin = {
                     this.$store.commit('setEditNoteIcon', bool);
                     break;
                 default:
-                    this.$store.commit('setAddNoteIcon', false);
+                    this.$store.commit('setAddNewNoteIcon', false);
                     this.$store.commit('setDeleteNoteIcon', false);
                     this.$store.commit('setEditNoteIcon', false);
             }

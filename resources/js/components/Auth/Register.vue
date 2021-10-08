@@ -20,7 +20,17 @@
           </div>
        </div>
        <div>
-          <input @input="validateSingly($event, 'password')" :value="data.password" class="w-full block bg-transparent rounded-lg border border-4 text-gray-300 px-4 py-3 mb-3 focus:outline-none placeholder-gray-500"  type="password" placeholder="Password">
+           <div class="w-full flex">
+            <input @input="validateSingly($event, 'password')" :value="data.password" class="w-11/12 block bg-transparent rounded-bl-lg rounded-tl-lg border border-4 text-gray-300 px-4 py-3 mb-3 focus:outline-none placeholder-gray-500"  :type="showPassword ? 'text' : 'password'" placeholder="Password">
+            <div class="w-1/12 grid place-items-center hover:bg-yellow-300 rounded-tr-lg rounded-br-lg border border-4 h-14">
+                <div class="hover:bg-yellow-300 cursor-pointer" v-if="showPassword" @click="showPassword = !showPassword">
+                    <img :src="invisible" class="w-7 md:w-7" alt="visible" />
+                </div>
+                <div class="hover:bg-yellow-300 cursor-pointer" v-else @click="showPassword = !showPassword">
+                    <img :src="visible" class="w-7 md:w-7" alt="invisible" />
+                </div>
+           </div>
+           </div>
            <div v-if="errors" class="pb-2">
               <p v-for="error in errors['password']" :key="error" class="text-xs text-yellow-500 italic">{{error}}</p>
             </div>
@@ -43,6 +53,9 @@ export default {
           processing: false,
           errors: null,
           errorMessage: null,
+          showPassword: false,
+          visible: '/svg/visibility.svg',
+          invisible: '/svg/invisibility.svg',
           data: {
             first_name: '',
             last_name: '',
@@ -85,12 +98,12 @@ export default {
         const user = response.data.data.user;
         this.$store.commit('authenticate', token);
         this.$store.commit('setUser', user);
-        this.$notify({ group: "success", title: "Success", text: response.data.message}, 2000)
+        this.$notify({ group: "success", title: "Success", text: response.data.message}, 4000)
         await this.$router.push({path: '/note'});
       } catch (error) {
         this.errors = error.response.data.errors;
         this.errorMessage = error.response.data.message;
-        this.$notify({group: "error", title: "Error", text: error.response.data.message}, 2000)
+        this.$notify({group: "error", title: "Error", text: error.response.data.message}, 4000)
       }
       this.processing = false;
     }

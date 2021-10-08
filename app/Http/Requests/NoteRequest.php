@@ -28,7 +28,8 @@ class NoteRequest extends FormRequest
             'slug' => ['required', 'string'],
             'description' => ['required', 'string'],
             'tags' => ['nullable', 'string'],
-            'read_minute' => ['required', 'numeric']
+            'read_minute' => ['required', 'numeric'],
+            'reference' => ['nullable', 'string']
         ];
     }
 }
