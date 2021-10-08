@@ -3,7 +3,7 @@ cp .env.example .env
 
 ./sail.sh build
 
-./sail up -d
+./sail.sh up -d
 
 ./sail.sh composer install
 
