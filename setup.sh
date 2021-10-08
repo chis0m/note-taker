@@ -5,7 +5,7 @@ cp .env.example .env
 
 ./sail.sh up -d
 
-./sail.sh composer install
+./sail.sh composer install --ignore-platform-reqs
 
 ./sail.sh artisan key:generate
 
