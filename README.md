@@ -102,7 +102,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ```bash
   http://127.0.0.1:9999 #Or any port you used in during deployment
   
-  email: **user**
+  email: **user@gmail.com**
 
   password: **PAsZ1234#**
 
