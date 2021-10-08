@@ -35,15 +35,14 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
   git clone https://github.com/chis0m/note-taker.git
   
   cp .env.example .env
-  
+
   cd note-taker
   
   ./sail.sh build
 
   ./sail.sh up -d
   
-  ./sail.sh composer install
-  
+  ./sail.sh composer install --ignore-platform-reqs
   
   ./sail.sh artisan key:generate
   
