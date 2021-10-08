@@ -1,16 +1,16 @@
 #! /bin/bash
-vendor/bin/sail up -d --build
+./sail.sh up -d --build
 
-vendor/bin/sail composer install
+./sail.sh composer install
 
 cp .env.example .env
 
-vendor/bin/sail artisan key:generate
+./sail.sh artisan key:generate
 
-vendor/bin/sail artisan jwt:secret
+./sail.sh artisan jwt:secret
 
-vendor/bin/sail artisan migrate --seed
+./sail.sh artisan migrate --seed
 
-vendor/bin/sail npm install
+./sail.sh npm install
 
-vendor/bin/sail npm run watch
+./sail.sh npm run watch
