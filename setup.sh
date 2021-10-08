@@ -1,18 +1,13 @@
 #! /bin/bash
+vendor/bin/sail up -d --build
 
-  git clone https://github.com/chis0m/note-taker.git
+vendor/bin/sail composer install
 
-  cd note-taker
+cp .env.example .env
 
-  vendor/bin/sail up -d --build
+vendor/bin/sail artisan key:generate
 
-  vendor/bin/sail composer install
+vendor/bin/sail artisan jwt:secret
 
-  cp .env.example .env
-
-  vendor/bin/sail artisan key:generate
-
-  vendor/bin/sail artisan jwt:secret
-
-  vendor/bin/sail artisan migrate --seed
+vendor/bin/sail artisan migrate --seed
 
