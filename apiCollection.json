@@ -1,0 +1,1019 @@
+{
+	"info": {
+		"_postman_id": "1e1f2fd8-5a8b-473c-bdb9-e9ca67769cf6",
+		"name": "Note taker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"token\", JSON.parse(responseBody).data.token);",
+									"pm.environment.set(\"user_id\", JSON.parse(responseBody).data.user.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "PAsZ1234#",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{notetaker_url}}/api/login",
+							"host": [
+								"{{notetaker_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{notetaker_url}}/api/login",
+									"host": [
+										"{{notetaker_url}}"
+									],
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:9999"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 08:48:50 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 08:48:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.11"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"You are successfully logged in.\",\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6OTk5OVwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMzMzNzMzMCwiZXhwIjoxNjMzMzQwOTMwLCJuYmYiOjE2MzMzMzczMzAsImp0aSI6IkRNMDlBY2NlT1Y4Z2l6bnEiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.zXrBvfKB51nFUTp-T2PYwiLfMq5zFPJ3Cl1U-5NJcMo\",\n        \"type\": \"bearer\",\n        \"expires_in\": 3600,\n        \"user\": {\n            \"id\": 2,\n            \"first_name\": \"admin\",\n            \"last_name\": \"admin\",\n            \"email\": \"admin@gmail.com\",\n            \"created_at\": \"2021-10-04T02:28:27.000000Z\",\n            \"updated_at\": \"2021-10-04T02:28:27.000000Z\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register a user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"atoken\", JSON.parse(responseBody).data.token);",
+									"pm.globals.set(\"user_id\", JSON.parse(responseBody).data.user.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "user@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "PAsZ1234#",
+									"description": "min of 6 characters|mixed cases|one symbol|one number|not compromised",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{notetaker_url}}/api/register",
+							"host": [
+								"{{notetaker_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register a user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "first_name",
+											"value": "user",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "user",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "user@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "PAsZ1234#",
+											"description": "min of 6 characters|mixed cases|one symbol|one number|not compromised",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{notetaker_url}}/api/register",
+									"host": [
+										"{{notetaker_url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:9999"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 09:46:23 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 09:46:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.11"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Successful\",\n    \"data\": {\n        \"first_name\": \"user\",\n        \"last_name\": \"user\",\n        \"email\": \"user@gmail.com\",\n        \"updated_at\": \"2021-10-04T09:46:23.000000Z\",\n        \"created_at\": \"2021-10-04T09:46:23.000000Z\",\n        \"id\": 4\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Note Resource",
+			"item": [
+				{
+					"name": "Get All User's Notes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{notetaker_url}}/api/notes",
+							"host": [
+								"{{notetaker_url}}"
+							],
+							"path": [
+								"api",
+								"notes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a User's Notes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{notetaker_url}}/api/notes",
+									"host": [
+										"{{notetaker_url}}"
+									],
+									"path": [
+										"api",
+										"notes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:9999"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:39:36 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:39:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.11"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Fetch operation successful\",\n    \"data\": [\n        {\n            \"id\": 4,\n            \"user_id\": 2,\n            \"title\": \"Mock Turtle, 'they--you've seen them, of course?' 'Yes,' said Alice.\",\n            \"slug\": \"mock-turtle-they-youve-seen-them-of-course-yes-said-alice\",\n            \"tags\": \"dicta,exercitationem,corrupti\",\n            \"description\": \"March Hare. 'Then it ought to have it explained,' said the Mouse, frowning, but very glad to get in?' she repeated, aloud. 'I shall be late!' (when she thought it over here,' said the last few minutes, and began by producing from under his arm a great many more than.\",\n            \"read_time\": 0,\n            \"created_at\": \"Oct 4, 2021\",\n            \"updated_at\": \"Oct 4, 2021\"\n        },\n        {\n            \"id\": 5,\n            \"user_id\": 2,\n            \"title\": \"Half-past one, time for dinner!' ('I only wish they COULD!.\",\n            \"slug\": \"half-past-one-time-for-dinner-i-only-wish-they-could\",\n            \"tags\": \"quia,ab,dolores\",\n            \"description\": \"Do come back with the other ladder?--Why, I hadn't mentioned Dinah!' she said to live. 'I've seen a cat without a moment's delay would cost.\",\n            \"read_time\": 3,\n            \"created_at\": \"Oct 4, 2021\",\n            \"updated_at\": \"Oct 4, 2021\"\n        },\n        {\n            \"id\": 6,\n            \"user_id\": 2,\n            \"title\": \"Do you think you could only hear.\",\n            \"slug\": \"do-you-think-you-could-only-hear\",\n            \"tags\": \"aperiam,quis,et\",\n            \"description\": \"Alice, timidly; 'some of the sort,' said the Dodo, 'the best way to explain the paper. 'If there's no use their putting their heads downward! The Antipathies, I think--' (she was obliged to have wondered at this, that she hardly knew what she was getting quite crowded.\",\n            \"read_time\": 1,\n            \"created_at\": \"Oct 4, 2021\",\n            \"updated_at\": \"Oct 4, 2021\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a User's Single Note",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{notetaker_url}}/api/notes/14",
+							"host": [
+								"{{notetaker_url}}"
+							],
+							"path": [
+								"api",
+								"notes",
+								"14"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a User's Notes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{notetaker_url}}/api/notes/4",
+									"host": [
+										"{{notetaker_url}}"
+									],
+									"path": [
+										"api",
+										"notes",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:9999"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:42:37 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:42:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.11"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Fetch operation successful\",\n    \"data\": {\n        \"id\": 4,\n        \"user_id\": 2,\n        \"title\": \"Mock Turtle, 'they--you've seen them, of course?' 'Yes,' said Alice.\",\n        \"slug\": \"mock-turtle-they-youve-seen-them-of-course-yes-said-alice\",\n        \"description\": \"March Hare. 'Then it ought to have it explained,' said the Mouse, frowning, but very glad to get in?' she repeated, aloud. 'I shall be late!' (when she thought it over here,' said the last few minutes, and began by producing from under his arm a great many more than.\",\n        \"tags\": \"dicta,exercitationem,corrupti\",\n        \"read_minute\": 0,\n        \"created_at\": \"2021-10-04T19:52:28.000000Z\",\n        \"updated_at\": \"2021-10-04T19:52:28.000000Z\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Store a new note",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Hello world",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": "hello-world",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "hello world is a popular phrase uses to introduce programming languages",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "programming,computer",
+									"type": "text"
+								},
+								{
+									"key": "read_minute",
+									"value": "6",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{notetaker_url}}/api/notes",
+							"host": [
+								"{{notetaker_url}}"
+							],
+							"path": [
+								"api",
+								"notes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Store a new note",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Hello world",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "hello-world",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "hello world is a popular phrase uses to introduce programming languages",
+											"type": "text"
+										},
+										{
+											"key": "tags",
+											"value": "programming,computer",
+											"type": "text"
+										},
+										{
+											"key": "read_minute",
+											"value": "6",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{notetaker_url}}/api/notes",
+									"host": [
+										"{{notetaker_url}}"
+									],
+									"path": [
+										"api",
+										"notes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:9999"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:55:48 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:55:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.11"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Store operation successful\",\n    \"data\": {\n        \"title\": \"Hello world\",\n        \"slug\": \"hello-world\",\n        \"description\": \"hello world is a popular phrase uses to introduce programming languages\",\n        \"tags\": \"programming,computer\",\n        \"read_minute\": \"6\",\n        \"user_id\": 2,\n        \"updated_at\": \"2021-10-04T20:55:48.000000Z\",\n        \"created_at\": \"2021-10-04T20:55:48.000000Z\",\n        \"id\": 14\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a  note",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Hello world updated",
+									"type": "text"
+								},
+								{
+									"key": "slug",
+									"value": "hello-world-updated",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "hello world is a popular phrase uses to introduce programming languages",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "programming,computer",
+									"type": "text"
+								},
+								{
+									"key": "read_minute",
+									"value": "8",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{notetaker_url}}/api/notes/14?_method=PUT",
+							"host": [
+								"{{notetaker_url}}"
+							],
+							"path": [
+								"api",
+								"notes",
+								"14"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "PUT"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a  note",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "Hello world updated",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "hello-world-updated",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "hello world is a popular phrase uses to introduce programming languages",
+											"type": "text"
+										},
+										{
+											"key": "tags",
+											"value": "programming,computer",
+											"type": "text"
+										},
+										{
+											"key": "read_minute",
+											"value": "8",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{notetaker_url}}/api/notes/14?_method=PUT",
+									"host": [
+										"{{notetaker_url}}"
+									],
+									"path": [
+										"api",
+										"notes",
+										"14"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "PUT"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:9999"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:56:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:56:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.11"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Update operation successful\",\n    \"data\": {\n        \"id\": 14,\n        \"user_id\": 2,\n        \"title\": \"Hello world updated\",\n        \"slug\": \"hello-world-updated\",\n        \"description\": \"hello world is a popular phrase uses to introduce programming languages\",\n        \"tags\": \"programming,computer\",\n        \"read_minute\": \"8\",\n        \"created_at\": \"2021-10-04T20:55:48.000000Z\",\n        \"updated_at\": \"2021-10-04T20:56:28.000000Z\",\n        \"deleted_at\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a note",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{notetaker_url}}/api/notes/14",
+							"host": [
+								"{{notetaker_url}}"
+							],
+							"path": [
+								"api",
+								"notes",
+								"14"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete a note",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{notetaker_url}}/api/notes/14",
+									"host": [
+										"{{notetaker_url}}"
+									],
+									"path": [
+										"api",
+										"notes",
+										"14"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:9999"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:56:43 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 04 Oct 2021 20:56:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.11"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Delete operation successful\",\n    \"data\": {\n        \"id\": 14,\n        \"user_id\": 2,\n        \"title\": \"Hello world updated\",\n        \"slug\": \"hello-world-updated\",\n        \"description\": \"hello world is a popular phrase uses to introduce programming languages\",\n        \"tags\": \"programming,computer\",\n        \"read_minute\": 8,\n        \"created_at\": \"2021-10-04T20:55:48.000000Z\",\n        \"updated_at\": \"2021-10-04T20:56:43.000000Z\",\n        \"deleted_at\": \"2021-10-04T20:56:43.000000Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Base Url",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{notetaker_url}}/api",
+					"host": [
+						"{{notetaker_url}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Base Url",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{notetaker_url}}/api",
+							"host": [
+								"{{notetaker_url}}"
+							],
+							"path": [
+								"api"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:9999"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Oct 2021 08:33:14 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Oct 2021 08:33:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.11"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Welcome to my  Note Taker\"\n}"
+				}
+			]
+		}
+	]
+}

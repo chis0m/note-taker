@@ -85,6 +85,9 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/11854559-b5043f9f-8acf-49f8-a204-4222ab4eba3a?action=collection%2Ffork&collection-url=entityId%3D11854559-b5043f9f-8acf-49f8-a204-4222ab4eba3a%26entityType%3Dcollection%26workspaceId%3D98021da8-8663-4858-9780-e5a1927c64e1)
 
+> *Note:* if you experience any issues viewing this you can check the apiCollection.json file 
+> at the root of the project
+
 
 
 ## Author
