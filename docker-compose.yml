@@ -8,15 +8,11 @@ services:
             args:
                 WWWGROUP: '${WWWGROUP}'
         image: sail-8.0/app
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
         ports:
             - '${APP_PORT:-80}:80'
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1
-            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
         volumes:
             - '.:/var/www/html'
         networks:
@@ -39,9 +35,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
-            retries: 3
-            timeout: 5s
+          test: ["CMD", "mysqladmin", "ping"]
 
     mysql_test:
         image: 'mysql:8.0'
@@ -58,6 +52,7 @@ services:
         networks:
             - sail
 
+
     redis:
         image: 'redis:alpine'
         ports:
@@ -67,9 +62,8 @@ services:
         networks:
             - sail
         healthcheck:
-            test: ["CMD", "redis-cli", "ping"]
-            retries: 3
-            timeout: 5s
+          test: ["CMD", "redis-cli", "ping"]
+
 networks:
     sail:
         driver: bridge
