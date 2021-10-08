@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Note;
 
+use App\Exceptions\ApplicationException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoteRequest;
 use App\Models\Note;

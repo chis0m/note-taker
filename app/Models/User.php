@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Database\Factories\UserFactory;
 use Eloquent;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -66,6 +65,7 @@ class User extends Authenticatable implements JWTSubject
         'last_name',
         'email',
         'password',
+        'login_at'
     ];
 
     /**
@@ -110,5 +110,20 @@ class User extends Authenticatable implements JWTSubject
     public function notes(): HasMany
     {
         return $this->hasMany(Note::class);
+    }
+
+    public function setFirstNameAttribute(string $value): void
+    {
+        $this->attributes['first_name'] = strtolower($value);
+    }
+
+    public function setLastNameAttribute(string $value): void
+    {
+        $this->attributes['last_name'] = strtolower($value);
+    }
+
+    public function setEmailAttribute(string $value): void
+    {
+        $this->attributes['email'] = strtolower($value);
     }
 }

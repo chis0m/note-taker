@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Auth;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Response;
@@ -18,6 +17,7 @@ class LoginController extends Controller
             return $this->error(null, Lang::get('auth.failed'));
         }
         $user = $this->guard()->user();
+        $user->update(['login_at' => now()]);
         return $this->respondWithToken($token, $user, Response::HTTP_ACCEPTED);
     }
 

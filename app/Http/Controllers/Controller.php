@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Auth\Guard;
@@ -52,7 +53,7 @@ class Controller extends BaseController
         ];
 
         if (!is_null($user)) {
-            $data['user'] = $user;
+            $data['user'] = new UserResource($user);
         }
         return $this->success($data, Lang::get('auth.success'), $statusCode);
     }

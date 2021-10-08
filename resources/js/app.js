@@ -1,17 +1,53 @@
 require('./bootstrap');
 
-import Vue from 'vue'
-import VueRouter from 'vue-router';
-import routes from './route';
-import store from './store';
+import { createApp } from 'vue';
+import router from './router';
+import store from "./store";
+import axios from "axios";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import singleValidation from "./mixins/singleValidation";
+import validation from "./mixins/validation";
+import general from "./mixins/general";
+import Notifications from 'notiwind';
 import App from "./components/App";
-
-Vue.use(VueRouter);
-
-const router = new VueRouter(routes);
-const app = new Vue({
-    el: '#app',
-    components: {App},
-    router,
-    store
+const hljs = require('highlight.js');
+const md = require('markdown-it')({
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(str, { language: lang }).value;
+      } catch (__) {
+        //
+      }
+    }
+    return ''; // use external default escaping
+  }
 });
+
+axios.interceptors.request.use(
+  (config) => {
+    let token = localStorage.getItem('access_token');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${ token }`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+AOS.init();
+const app = createApp(App);
+app.config.globalProperties.md = md;
+app.config.globalProperties.axios = axios;
+app.config.globalProperties.validate = require("validate.js");
+app.config.globalProperties.serverUrl = process.env.MIX_APP_SERVER_URL;
+app.use(router);
+app.use(store);
+app.use(Notifications);
+app.mixin(general);
+app.mixin(validation);
+app.mixin(singleValidation);
+app.mount('#app');

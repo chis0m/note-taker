@@ -1,5 +1,9 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Rhodium+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Rampart+One&family=Vast+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
 
 // Variables
 @import 'variables';
@@ -11,8 +15,9 @@
 @tailwind base;
 @tailwind components;
 
-.tester {
-    @apply bg-blue-300 text-white no-underline rounded-lg text-sm py-2 px-5
+body {
+    font-family: Nunito;
+    @apply bg-black-main;
 }
 
 @tailwind utilities;

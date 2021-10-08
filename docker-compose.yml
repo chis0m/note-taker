@@ -76,7 +76,5 @@ networks:
 volumes:
     sailmysql:
         driver: local
-    sailmysql_test:
-        driver: local
     sailredis:
         driver: local

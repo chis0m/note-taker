@@ -11,4 +11,6 @@
 # featuers
 # - dev and production docker containers
 # - test
-# - caching
+# - caching with redis
+# - after test run sail artisan migrate:fresh --seed
+

@@ -14,8 +14,10 @@ module.exports = {
 			},
             gray: {
 			    ...colors.gray,
-                side: '#3c3c3d',
+                side: '#272729',
+                // side: '#3c3c3d',
                 font: '#a3a1a1',
+
 
 
             }
@@ -251,6 +253,13 @@ module.exports = {
       DEFAULT: '1',
     },
     fontFamily: {
+      nunito: ['nunito'],
+      rhodium: ['Rhodium Libre'],
+      bungee: ['Bungee Shade'],
+      vast: ['Vast Shadow'],
+      rampart: ['Rampart One'],
+      lobster: ['Lobster'],
+      montserrat: ['Montserrat'],
       sans: [
         'ui-sans-serif',
         'system-ui',
@@ -976,5 +985,7 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
-  plugins: [],
+  plugins: [
+      require('@tailwindcss/line-clamp')
+  ],
 }
