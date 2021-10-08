@@ -1,18 +1,18 @@
 #! /bin/bash
 cp .env.example .env
 
-./sail.sh build
+./sail build
 
-./sail.sh up -d
+./sail up -d
 
-./sail.sh composer install --ignore-platform-reqs
+./sail composer install --ignore-platform-reqs
 
-./sail.sh artisan key:generate
+./sail artisan key:generate
 
-./sail.sh artisan jwt:secret
+./sail artisan jwt:secret
 
-./sail.sh artisan migrate --seed
+./sail artisan migrate --seed
 
-./sail.sh npm install
+./sail npm install
 
-./sail.sh npm run dev
+./sail npm run dev
