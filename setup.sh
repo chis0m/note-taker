@@ -1,11 +1,11 @@
 #! /bin/bash
+cp .env.example .env
+
 ./sail.sh build
 
 ./sail up -d
 
 ./sail.sh composer install
-
-cp .env.example .env
 
 ./sail.sh artisan key:generate
 
