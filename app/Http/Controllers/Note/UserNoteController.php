@@ -31,7 +31,6 @@ class UserNoteController extends Controller
      */
     public function store(NoteRequest $request): JsonResponse
     {
-        logger($request->toArray());
         $user = $request->user();
         $reference = $request['reference'] ?? generateReference();
         $content = $request->only(['title', 'slug', 'description', 'tags', 'read_minute']);

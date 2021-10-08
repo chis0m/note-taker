@@ -66,7 +66,7 @@ class AuthTest extends TestCase
         $url = $this->baseUrl . "/register";
         $response = $this->post($url, [], ['Accept' => 'Application/json']);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)->assertJson([
-            'message' => 'invalid credentials',
+            'message' => 'The given data was invalid',
             'errors' => [
                 'first_name' => [
                     'The first name field is required.'
@@ -98,7 +98,7 @@ class AuthTest extends TestCase
             ['Accept' => 'Application/json']
         );
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)->assertJson([
-            'message' => 'invalid credentials',
+            'message' => 'The given data was invalid',
             'errors' => [
                 'password' => [
                     'The password must be at least 6 characters.'
@@ -121,7 +121,7 @@ class AuthTest extends TestCase
             ['Accept' => 'Application/json']
         );
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY)->assertJson([
-            'message' => 'invalid credentials',
+            'message' => 'The given data was invalid',
             'errors' => [
                 'password' => [
                     'The password must contain at least one symbol.'
@@ -141,7 +141,7 @@ class AuthTest extends TestCase
         $response = $this->post($url, ['email' => '', 'password' => ''], ['Accept' => 'Application/json']);
         $response->assertStatus(422)->assertJson([
             'success' => false,
-            'message' => 'invalid credentials',
+            'message' => 'The given data was invalid',
             'errors' => [
                 'email' => [
                     'The email field is required.'

@@ -82,7 +82,7 @@ class Handler extends ExceptionHandler
 
         if ($e instanceof ValidationException) {
             $errors = $e->validator->errors()->getMessages();
-            return $this->error($errors, 'The given data was invalid.', Response::HTTP_UNPROCESSABLE_ENTITY);
+            return $this->error($errors, 'The given data was invalid', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
 
