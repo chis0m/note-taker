@@ -11,19 +11,6 @@ import validation from "./mixins/validation";
 import general from "./mixins/general";
 import Notifications from 'notiwind';
 import App from "./components/App";
-const hljs = require('highlight.js');
-const md = require('markdown-it')({
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(str, { language: lang }).value;
-      } catch (__) {
-        //
-      }
-    }
-    return ''; // use external default escaping
-  }
-});
 
 axios.interceptors.request.use(
   (config) => {
@@ -40,7 +27,6 @@ axios.interceptors.request.use(
 
 AOS.init();
 const app = createApp(App);
-app.config.globalProperties.md = md;
 app.config.globalProperties.axios = axios;
 app.config.globalProperties.validate = require("validate.js");
 app.config.globalProperties.serverUrl = process.env.MIX_APP_SERVER_URL;

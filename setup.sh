@@ -1,16 +1,18 @@
-# container - dev/production
-# jwt publish key
-# laravel publish key
-# php versio 7.4 packages needs this
+#! /bin/bash
 
-# remove post
+  git clone https://github.com/chis0m/note-taker.git
 
-# NOTE: Because the laravel sail uses Ubuntu 21.04 image you would need updated docker version ^20.10.7
+  cd note-taker
 
+  vendor/bin/sail up -d --build
 
-# featuers
-# - dev and production docker containers
-# - test
-# - caching with redis
-# - after test run sail artisan migrate:fresh --seed
+  vendor/bin/sail composer install
+
+  cp .env.example .env
+
+  vendor/bin/sail artisan key:generate
+
+  vendor/bin/sail artisan jwt:secret
+
+  vendor/bin/sail artisan migrate --seed
 
