@@ -31,6 +31,16 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ## Setup
 
 ### Installation
+
+> *Note:* For a quicker installation, you can copy and paste the below commands in your web directory
+> and you are up and running in few minutes.
+
+```bash
+ git clone https://github.com/chis0m/note-taker.git && cd note-taker && ./setup.sh
+```
+
+#### step by step
+
 ```bash
   git clone https://github.com/chis0m/note-taker.git
   
@@ -57,16 +67,15 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
   ./sail npm run dev
 ```
 
-> *Note:* For a quicker installation, you can copy and paste the below commands in your web directory
-> and you are up and running in few minutes.
-
-```bash
- git clone https://github.com/chis0m/note-taker.git && cd note-taker && ./setup.sh
-```
-
 
 > *Note:* if you want to stop the service just run:
 > - **./sail down**
+
+
+### Test
+```bash
+  ./sail test
+```
 
 
 ### Analyses
