@@ -100,7 +100,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ### Application
 > Access the application in your local host with
 ```bash
-  http://127.0.0.1:999 #Or any port you used in during deployment
+  http://127.0.0.1:9999 #Or any port you used in during deployment
 ```
 
 ### API Collection
