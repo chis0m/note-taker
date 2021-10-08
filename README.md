@@ -37,6 +37,8 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
   cp .env.example .env
 
   cd note-taker
+
+  ./sail down --rmi all -v || true #Optional - This will remove images that my interfere with the installation
   
   ./sail build
 

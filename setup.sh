@@ -1,6 +1,8 @@
 #! /bin/bash
 cp .env.example .env
 
+./sail down --rmi all -v || true
+
 ./sail build
 
 ./sail up -d
