@@ -1,5 +1,7 @@
 #! /bin/bash
-./sail.sh up -d --build
+./sail.sh build
+
+./sail up -d
 
 ./sail.sh composer install
 

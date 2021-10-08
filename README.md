@@ -36,21 +36,23 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
   
   cd note-taker
   
-  sail up -d --build
+  ./sail.sh build
+
+  ./sail.sh up -d
   
-  vendor/bin/sail composer install
+  ./sail.sh composer install
   
   cp .env.example .env
   
-  vendor/bin/sail artisan key:generate
+  ./sail.sh artisan key:generate
   
-  vendor/bin/sail artisan jwt:secret
+  ./sail.sh artisan jwt:secret
   
-  vendor/bin/sail artisan migrate --seed
+  ./sail.sh artisan migrate --seed
   
-  vendor/bin/sail npm install
+  ./sail.sh npm install
   
-  vendor/bin/sail npm run dev
+  ./sail.sh npm run dev
 ```
 
 > *Note:* For a quicker installation, you can copy and paste the below commands at your web directory
@@ -62,13 +64,13 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 
 > *Note:* if you want to stop the service just run:
-> - **vendor/bin/sail down**
+> - **./sail.sh down**
 
 
 ### Analyses
 
 ```bash
-    ./sail shell
+    ./sail.sh shell
     
     phpcbf
     
