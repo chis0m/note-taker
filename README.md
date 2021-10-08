@@ -26,6 +26,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Requirements
 > 1. You must have the docker registry installed on host machine
+> 2. It safer you have php7.4 and above running
 
 ## Setup
 
@@ -35,21 +36,21 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
   
   cd note-taker
   
-  ./sail.sh up -d --build
+  sail up -d --build
   
-  ./sail.sh composer install
+  vendor/bin/sail composer install
   
   cp .env.example .env
   
-  ./sail.sh artisan key:generate
+  vendor/bin/sail artisan key:generate
   
-  ./sail.sh artisan jwt:secret
+  vendor/bin/sail artisan jwt:secret
   
-  ./sail.sh artisan migrate --seed
+  vendor/bin/sail artisan migrate --seed
   
-  ./sail.sh npm install
+  vendor/bin/sail npm install
   
-  ./sail.sh npm run watch
+  vendor/bin/sail npm run dev
 ```
 
 > *Note:* For a quicker installation, you can copy and paste the below commands at your web directory
@@ -71,7 +72,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ### Analyses
 
 ```bash
-    ./sail.sh shell
+    vendor/bin/sail shell
     
     phpcbf
     
@@ -100,3 +101,4 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ## Author
 
 Ejim Chisom - ejimchisom@gmail.com
+PLease do reachout for any clearification. Thank you. Cheers!😉
