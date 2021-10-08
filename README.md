@@ -72,7 +72,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ### Analyses
 
 ```bash
-    vendor/bin/sail shell
+    ./sail shell
     
     phpcbf
     
