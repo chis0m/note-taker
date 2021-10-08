@@ -52,9 +52,11 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 > and you are up and running in few minutes.
 
 ```bash
-	git clone https://github.com/chis0m/note-taker.git
-	cd note-taker
-	./setup.sh
+ git clone https://github.com/chis0m/note-taker.git
+ 
+ cd note-taker
+ 
+ ./setup.sh
 ```
 
 
