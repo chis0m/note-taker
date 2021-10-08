@@ -48,7 +48,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
   cd note-taker
 
-  ./sail down --rmi all -v || true #Optional - This will remove images that my interfere with the installation
+  ./sail down --rmi all -v || true #Optional - This will remove images that may interfere with the installation
   
   ./sail build
 
