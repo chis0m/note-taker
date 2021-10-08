@@ -46,6 +46,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
   vendor/bin/sail artisan jwt:secret
   
   vendor/bin/sail artisan migrate --seed
+  
+  vendor/bin/sail npm install
+  
+  vendor/bin/sail npm run watch
 ```
 
 > *Note:* For a quicker installation, you can copy and paste the below commands at your web directory
