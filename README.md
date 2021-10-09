@@ -39,7 +39,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
  git clone https://github.com/chis0m/note-taker.git && cd note-taker && ./setup.sh
 ```
 
-#### step by step
+#### Alternatively, step by step
 
 ```bash
   git clone https://github.com/chis0m/note-taker.git
@@ -102,9 +102,9 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ```bash
   http://127.0.0.1:9999 #Or any port you used in during deployment
   
-  email: **user@gmail.com**
+  email: user@gmail.com
 
-  password: **PAsZ1234#**
+  password: PAsZ1234#
 
   # You can create an account however
 
