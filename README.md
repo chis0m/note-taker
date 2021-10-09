@@ -12,6 +12,7 @@ Note taker is a simple monolith application for making notes. Built with Laravel
 - Authentication Page (Login and Registration).
 - Note Taking Page - add, update, list, edit, delete, search notes.
 - Note/text formatting module.
+- 404 Page
 
 ### Backend End Architecture:
 
